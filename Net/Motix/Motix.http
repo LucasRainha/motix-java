@@ -1,6 +1,0 @@
-@Motix_HostAddress = http://localhost:5210
-
-GET {{Motix_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###

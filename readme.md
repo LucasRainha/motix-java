@@ -1,106 +1,110 @@
-# 🚀 MOTIX — Projeto Integrador (FIAP 2025 - Challenge 1º Semestre)
 
+# 🛠️ Motix - API de Usuários
 
-Repositório central do projeto **MOTIX**, uma solução integrada que usa IoT, visão computacional, mobile, cloud, e boas práticas de segurança para **localizar e organizar motocicletas em pátios logísticos** da empresa Mottu.
-
-Este repositório agrega todos os módulos implementados pelas disciplinas do semestre, com entregas práticas em diversas tecnologias.
+Este projeto faz parte do ecossistema da solução **Motix**, voltada para controle e rastreamento de motocicletas em pátios via IoT. Este serviço é responsável pelo **gerenciamento de usuários**, incluindo operações de CRUD com suporte a Swagger para documentação da API.
 
 ---
 
-## 📚 Disciplinas e Componentes
+## 📦 Tecnologias Utilizadas
 
-| 📂 Pasta            | 📘 Disciplina                  | 💬 Descrição                                                                 |
-|---------------------|--------------------------------|------------------------------------------------------------------------------|
-| `mobile/`           | Mobile Development             | Aplicativo React Native (Expo) para cadastro, controle e relatórios de motos |
-| `java/`             | Java Development               | API REST de usuários com Spring Boot e Swagger                              |
-| `iot/`              | IoT & Computer Vision          | Script Python com Roboflow para identificar motos por imagem aérea          |
-| `cloud/`            | Cloud & DevOps Tools           | Dockerfile, deploy em Azure VM e scripts de provisionamento via CLI         |
-| `database/`         | Database & Persistence         | Scripts SQL para modelagem relacional e integração com a aplicação Java     |
-| `compliance/`       | Governance & Compliance        | Documentação de riscos, plano de continuidade e adequação à LGPD             |
-| `net/`              | Desenvolvimento .NET (extra)   | API REST alternativa utilizando .NET para ampliação tecnológica              |
-
----
-
-## 🎯 Objetivo do Projeto
-
-Resolver um problema logístico real da Mottu: **a dificuldade de localizar motos em pátios** quando estão sem placa, desorganizadas ou com localizador inativo.
-
-### A solução proposta:
-- Divide o pátio por setor
-- Usa câmera aérea + IA para detectar motos automaticamente
-- Permite cadastro manual de motos sem placa
-- Fornece app para controle em tempo real e exportação de relatórios
+- **Java 17**
+- **Spring Boot**
+- **Spring Web**
+- **Spring Data JPA**
+- **OpenAPI (Swagger)**
+- **OracleDB**
+- **Lombok**
+- **Maven**
 
 ---
 
-## 🛠️ Tecnologias Utilizadas
+## 🔁 Funcionalidades da API
 
-| Categoria         | Tecnologias / Ferramentas                         |
-|-------------------|---------------------------------------------------|
-| Mobile            | React Native, Expo, AsyncStorage                  |
-| Backend Java      | Spring Boot, Java 17, Swagger, Maven              |
-| Backend .NET      | ASP.NET Core, Entity Framework                    |
-| IoT & Visão Comp. | Python, Pillow, Roboflow API                      |
-| Banco de Dados    | PostgreSQL, Oracle SQL (scriptado)                |
-| DevOps & Cloud    | Docker, Azure CLI, Azure VM, GitHub Actions       |
+A API permite:
 
+- 🔍 Listar todos os usuários
+- 🔍 Buscar usuário por:
+  - `ID` (UUID)
+  - `RM` (registro)
+  - `Nome`
+- ➕ Cadastrar um novo usuário
+- ✏️ Atualizar um usuário existente
+- ❌ Remover usuário por:
+  - `ID`
+  - `RM`
 
 ---
 
-## 📂 Estrutura do Repositório
+## 🔓 Endpoints para Testar
+
+| Método | Endpoint                                | Descrição                         |
+|--------|-----------------------------------------|-----------------------------------|
+| GET    | `/users?page=0&size=5&sort=name,asc`    | Lista todos os usuários paginados |
+| GET    | `/bikes?page=0&size=5&sortBy=plate`     | Lista todos as motos paginadas    |
+
+
+*Lembrar de acessar a porta 8080 ao se conectar aos endpoints!*
+
+
+
+> Todas as rotas estão documentadas no Swagger UI.
+
+---
+
+## 📄 Documentação Swagger
+
+A documentação interativa estará disponível em:
 
 ```
-motix/
-├── Cloud/                  # Deploy, scripts e Dockerfile
-├── Compliance/             # Relatórios, política de segurança, plano LGPD
-├── Database/               # Scripts SQL de criação e população
-├── Iot/                    # Roboflow + visão computacional
-├── Java/                   # Spring Boot API
-├── Mobile/                 # App React Native
-├── Net/                    # API .NET Core (opcional)
-└── README.md               # Este arquivo
-
+http://localhost:8080/swagger-ui/index.html
 ```
 
 ---
 
-## 📱 Funcionalidades
+## 🚀 Como Rodar o Projeto
 
-- Login via RM + senha
-- Cadastro de motos com data/hora e vaga
-- Validação de vagas ocupadas
-- Relatórios com exportação em PDF
-- Detecção de motos por imagem aérea
-- Deploy automatizado em nuvem com Docker + Azure CLI
+### Pré-requisitos
+
+- Java 17+
+- Maven
+- Banco de dados PostgreSQL (ou compatível)
+
+### Rodando localmente
+
+```bash
+# Clone o repositório
+git clone https://github.com/klebers022/Motix.git
+cd Motix
+cd Java
+
+# Compilar e rodar
+./mvnw spring-boot:run
+```
 
 ---
 
-## 👥 Equipe do Projeto
+## 🧑‍💻 Participantes
 
-| Nome               | RM      |
-|--------------------|---------|
-| Kleber da Silva    | 557887  |
-| Nicolas Barutti    | 554944  |
-| Lucas Rainha       | 558471  |
+- **Kleber da Silva** — RM: 557887
+- **Nicolas Barutti** — RM: 554944
+- **Lucas Rainha** — RM: 558471
 
 ---
 
-## 🎓 Instituição
+## 📁 Estrutura do Projeto
 
-**FIAP - Faculdade de Informática e Administração Paulista**  
-Curso: **Análise e Desenvolvimento de Sistemas**  
-Período: **1º Semestre de 2025** — Challenge Integrador
+```
+src/
+├── controllers/        # Camada REST (UserController)
+├── services/           # Camada de negócio (UserService)
+├── models/             # Entidades e DTOs
+└── repositories/       # Interface de persistência
+```
 
 ---
 
 ## 📬 Contato
 
-Dúvidas, sugestões ou colaboração?  
-Abra uma *issue* neste repositório ou envie um e-mail para a equipe.
+Em caso de dúvidas, entre em contato via [rm558471@fiap.com.br] ou [LucasRainha] (GitHub).
 
 ---
-
-## 📝 Licença
-
-Este projeto é **educacional** e não possui fins comerciais.  
-Todos os dados e códigos são protótipos em fase acadêmica.
