@@ -50,7 +50,7 @@ public class MotorcycleApiController {
     }
 
     @PutMapping
-    public MotorcycleDTO updateMotorclycle(@RequestBody MotorcycleDTO dto) {
+    public MotorcycleDTO updateMotorclycle(@PathVariable MotorcycleDTO dto) {
         return MotorcycleDTO.fromEntity(motorcycleService.updateMotorcycle(dto.toEntity()));
     }
 
