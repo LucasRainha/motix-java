@@ -3,7 +3,6 @@
 
 Este projeto faz parte do ecossistema da solução **Motix**, voltada para controle e rastreamento de motocicletas em pátios via IoT. Este serviço é responsável pelo **gerenciamento de usuários**, incluindo operações de CRUD com suporte a Swagger para documentação da API.
 
-
 ---
 
 ## 📦 Tecnologias Utilizadas
