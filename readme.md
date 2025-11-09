@@ -16,6 +16,7 @@ Este projeto faz parte do ecossistema da solução **Motix**, voltada para contr
 - **Lombok**
 - **Maven**
 
+
 ---
 
 ## 🔁 Funcionalidades da API
